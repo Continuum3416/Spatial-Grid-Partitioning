@@ -12,9 +12,9 @@ Minimum Requirements:
 
 The code (on my machine) can handle up to 21,000 objects at over 60 FPS and 23,000 objects at over 50 FPS in release mode.
 
-[comment]: <> (Hosted with AWS-S3)
+[comment]: <> (Hosted with git)
 <p align="center">
-<img alt="GIF" src="https://github.com/Continuum3416/git-media/blob/main/gif/23000-seg1.gif" width="600" height="600">
+<img alt="GIF" src="https://github.com/Continuum3416/git-media/blob/main/gif/23000-seg1.gif" width="600">
 </p>
 
 ## Build
