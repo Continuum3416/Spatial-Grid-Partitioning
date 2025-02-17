@@ -10,7 +10,7 @@ Minimum Requirements:
 
 ## Preview
 
-The code (on my machine) can handle up to 21,000 objects at over 60 FPS and 23,000 objects at over 50 FPS in release mode.
+The code (on my machine) can handle up to 21,000 objects at over 60 FPS and 23,000 objects at over 50 FPS in release mode. Illustration in the demo below:
 
 [comment]: <> (Hosted with git)
 <p align="center">
