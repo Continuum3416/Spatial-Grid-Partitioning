@@ -1,0 +1,5 @@
+.vscode/
+build/
+scratch/
+*.txt
+media/*.mp4
