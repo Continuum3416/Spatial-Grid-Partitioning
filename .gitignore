@@ -1,5 +1,4 @@
 .vscode/
 build/
 scratch/
-media/*.mp4
 media/*.gif
