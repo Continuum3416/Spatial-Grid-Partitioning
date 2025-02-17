@@ -12,8 +12,9 @@ Minimum Requirements:
 
 The code (on my machine) can handle up to 21,000 objects at over 60 FPS and 23,000 objects at over 50 FPS in release mode.
 
+[comment]: <> (Hosted with AWS-S3)
 <p align="center">
-<img src="media/23000-seg1.gif" width="600" height="600">
+<img src="https://gif-s3.s3.us-east-2.amazonaws.com/23000-seg1.gif" width="600" height="600">
 </p>
 
 ## Build
