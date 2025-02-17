@@ -14,7 +14,7 @@ The code (on my machine) can handle up to 21,000 objects at over 60 FPS and 23,0
 
 [comment]: <> (Hosted with AWS-S3)
 <p align="center">
-<img src="https://gif-s3.s3.us-east-2.amazonaws.com/23000-seg1.gif" width="600" height="600">
+<video alt="GIF" src="media/23000-seg1.mp4" width="600" height="600">
 </p>
 
 ## Build
