@@ -14,7 +14,7 @@ The code (on my machine) can handle up to 21,000 objects at over 60 FPS and 23,0
 
 [comment]: <> (Hosted with AWS-S3)
 <p align="center">
-<video alt="GIF" src="media/23000-seg1.mp4" width="600" height="600">
+<img alt="GIF" src="https://github.com/Continuum3416/git-media/blob/main/gif/23000-seg1.gif" width="600" height="600">
 </p>
 
 ## Build
