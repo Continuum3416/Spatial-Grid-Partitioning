@@ -27,6 +27,53 @@ public:
         }
     }
 
+    void renderTriangle(const PhysicsSolver& solver) const
+    {
+        const auto& objects = solver.objects;
+        sf::VertexArray vertices(sf::Triangles);
+
+        for (const auto& obj : objects)
+        {
+            const int triangleCount = 3; // Approximate a circle with triangles
+            float angleStep = 2 * PI_f / triangleCount;
+
+            for (int i = 0; i < triangleCount; ++i)
+            {
+                float angle1 = i * angleStep;
+                float angle2 = (i + 1) * angleStep;
+
+                sf::Vector2f center = obj.position;
+                sf::Vector2f point1 = center + sf::Vector2f(std::cos(angle1), std::sin(angle1)) * obj.radius;
+                sf::Vector2f point2 = center + sf::Vector2f(std::cos(angle2), std::sin(angle2)) * obj.radius;
+
+                sf::Color color = obj.color;
+
+                // Add triangle (center, point1, point2)
+                vertices.append(sf::Vertex(center, color));
+                vertices.append(sf::Vertex(point1, color));
+                vertices.append(sf::Vertex(point2, color));
+            }
+        }
+
+        render.draw(vertices);
+    }
+
+    void renderPoints(const PhysicsSolver& solver) const
+    {
+        const auto& objects = solver.objects;
+        sf::VertexArray vertices(sf::Points);
+
+        for (const auto& obj : objects)
+        {
+            sf::Vector2f center = obj.position;
+            sf::Color color = obj.color;
+            vertices.append(sf::Vertex(center, color));
+        }
+
+        render.draw(vertices);
+    }
+
+
     void renderDragArrow(const EventHandler& event) 
     {
         render.draw(event.trajectoryLine);

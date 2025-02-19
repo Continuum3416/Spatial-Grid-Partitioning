@@ -38,8 +38,10 @@ struct VerletBall
     // x(n+1) = 2 * x(n) - x(n-1) + a * dt^2
     void updatePosition(float dt) 
     {
+        const float DAMPING = 40.f;
+        const sf::Vector2f last_update_move = position - previous_position;
         sf::Vector2f temp_position = position;
-        position = 2.f * position - previous_position + acceleration * (dt * dt);
+        position = 2.f * position - previous_position + (acceleration - last_update_move * DAMPING) * (dt * dt);
         previous_position = temp_position;
     }
 

@@ -97,7 +97,7 @@ private:
             }
         }
     }
-    
+
     void updateObjects(float dt) {
         for(auto& obj: objects) {
             obj.updatePosition(dt);

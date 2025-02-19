@@ -14,6 +14,11 @@
 struct Cell {
     std::vector<size_t> ball_indices;
 
+    Cell()
+    {
+        ball_indices.reserve(30);
+    }
+
     void addBall(size_t index) {
         ball_indices.push_back(index);
     }
@@ -36,8 +41,8 @@ struct Grid {
     Grid(uint32_t w, uint32_t h, float cs = 25.f)
         : window_width(w), window_height(h), cell_size(cs) 
     {
-        grid_width  = static_cast<int>(std::ceil(w / cell_size));
-        grid_height = static_cast<int>(std::ceil(h / cell_size));
+        grid_width  = static_cast<uint32_t>(std::ceil(w / cell_size));
+        grid_height = static_cast<uint32_t>(std::ceil(h / cell_size));
         cells.resize(grid_width * grid_height);
     }
 
@@ -62,6 +67,7 @@ struct Grid {
             && cell_y >= 0 && cell_y < grid_height;
     }
 
+    // Input: ball position
     sf::Vector2i getCellCoords(const float& x, const float& y) const {
         return { static_cast<int>(x / cell_size),
                  static_cast<int>(y / cell_size) };
