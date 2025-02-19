@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
     const float spawn_delay           = 0.001f;
     const float initial_speed         = 2.f;              // Ball speed in m/s
     const sf::Vector2f spawn_position = {500.f, 250.f};
-    const uint32_t max_balls          = 20000;
+    const uint32_t max_balls          = 30000;
     solver.reserve(max_balls);
 
     // Clocks

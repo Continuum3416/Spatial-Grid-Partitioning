@@ -48,9 +48,9 @@ public:
         const float sub_dt = dt / sub_steps;
         for (uint16_t n{0}; n < sub_steps; ++n) 
         {
+            addObjectToGrid();
             updateObjects(sub_dt);
             handleBorderCollision(sf::Vector2i(50, 50), sf::Vector2i(1150, 1150));
-            addObjectToGrid();
             resolveCollisions();
         }
     }
@@ -66,7 +66,7 @@ private:
                 const float dist2        = delta.x * delta.x + delta.y * delta.y;
                 const float min_dist     = ballA.radius + ballB.radius;
 
-                if (dist2 < min_dist * min_dist && dist2 > EPSILON) 
+                if (dist2 < min_dist * min_dist && dist2 > EPSILON)
                 {
                     const float response_coef = RESTITUTION;
                     const float dist          = std::sqrt(dist2);
