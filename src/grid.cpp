@@ -35,16 +35,13 @@ int main(int argc, char* argv[])
     /// Instant ball generation to save time
     bool instant_generation = true;
     if(instant_generation) {
-        std::vector<VerletBall> balls;
-        balls.reserve(max_balls);
         for (uint32_t i = 0; i < max_balls; ++i) 
         {
-            float x = randomizer.generateRandomFloat(50, windowWidth - 50);
-            float y = randomizer.generateRandomFloat(50, windowHeight - 50);
-            float angle = randomizer.generateRandomFloat(0, 2 * PI_f);  // Random movement direction
-            const float radius           = 1.f;
+            const float x          = randomizer.generateRandomFloat(50, windowWidth - 50);
+            const float y          = randomizer.generateRandomFloat(50, windowHeight - 50);
+            float angle            = randomizer.generateRandomFloat(0, 2 * PI_f);
+            const float radius     = 1.f;
             sf::Color random_color = getRainbow(static_cast<float>(i));
-    
             auto& obj = solver.addObject(radius, {x, y}, initial_speed, angle);
             obj.color = random_color;
         }
