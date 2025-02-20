@@ -1,3 +1,7 @@
+//
+// This is an alternative approach for the grid - using pointers instead of index
+//
+
 #pragma once
 #include <cstdint>
 #include <vector>
