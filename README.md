@@ -14,7 +14,7 @@ The code (on my machine) can handle up to 21,000 objects at over 60 FPS, 23,000 
 
 [comment]: <> (Hosted with git)
 <p align="center">
-<img alt="GIF" src="https://github.com/Continuum3416/git-media/blob/main/gif/23000-seg1.gif" width="600">
+<img alt="GIF" src="https://github.com/Continuum3416/git-media/blob/main/gif/23k.gif" width="600">
 </p>
 
 However, this performance is affected by the use of `sf::CircleShape`, a non-primitive object. Since each ball requires a separate draw call per frame, and draw calls are relatively expensive operations, performance is limited.
@@ -22,13 +22,13 @@ However, this performance is affected by the use of `sf::CircleShape`, a non-pri
 To optimize this, we can store all objects in an array and render them in a single draw call per frame. SFML provides a lower-level mechanism for drawing called `sf::VertexArray`. By approximating small circles with triangles, the simulation can comfortably run at over 60 FPS with 70,000 objects:
 
 <p align="center">
-<img alt="GIF" src="media/70k.png" width="600">
+<img alt="70k-objects" src="media/70k.png" width="600">
 </p>
 
 For even greater performance, we can approximate small circles using an even more primitive type: `sf::Points`. With this approach, the simulation can crank up to 140,000 objects at around 60 FPS:
 
 <p align="center">
-<img alt="GIF" src="media/140k.png" width="600">
+<img alt="140k-objects" src="media/140k.png" width="600">
 </p>
 
 ## Build
@@ -61,14 +61,17 @@ Same thing for window, but remember to change to backward slash `\` and run with
 To enable gravity, go to `headers/Verlet.h` and change
 
 ```c++
-sf::Vector2f acceleration      = {0.f, 0.f};
+sf::Vector2f acceleration = {0.f, 0.f};
 ```
 
 to
 
+```c++
+sf::Vector2f acceleration = {0.f, 150.f};
 ```
-sf::Vector2f acceleration      = {0.f, earth::g_f * SCALE};
-```
+<p align="center">
+<img alt="gravity-enabled" src="media/gravity.png" width="600">
+</p>
 
 To shoot some balls, go to main (grid.cpp) and uncomment the two lines
 

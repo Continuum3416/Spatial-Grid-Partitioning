@@ -12,14 +12,14 @@
 
 
 struct Cell {
-    std::vector<size_t> ball_indices;
+    std::vector<uint32_t> ball_indices;
 
     Cell()
     {
         ball_indices.reserve(30);
     }
 
-    void addBall(size_t index) {
+    void addBall(uint32_t index) {
         ball_indices.push_back(index);
     }
 
@@ -47,7 +47,7 @@ struct Grid {
     }
 
     // Debug function
-    size_t getTotalBallInGrid()
+    size_t getTotalBallInGrid() const
     {
         size_t sum = 0;
         for(auto& cell : cells) {
@@ -84,10 +84,35 @@ struct Grid {
         return cells[cell_y * grid_width + cell_x];
     }
 
-    void addBall(size_t ball_idx, const VerletBall& ball) {
+
+    void addBall(uint32_t ball_idx, const VerletBall& ball) 
+    {
         sf::Vector2i cell_coords = getCellCoords(ball.position.x, ball.position.y);
-        if (isValidCell(cell_coords.x, cell_coords.y)) {
-            getCell(cell_coords.x, cell_coords.y).addBall(ball_idx);
-        }
+        getCell(cell_coords.x, cell_coords.y).addBall(ball_idx);
     }
+
+    // void addBall(uint32_t ball_idx, const VerletBall& ball) 
+    // {
+    //     sf::Vector2i cell_coords = getCellCoords(ball.position.x, ball.position.y);
+        
+    //     // Compute bounds of the ball
+    //     float radius = ball.radius;
+    //     float left   = ball.position.x - radius;
+    //     float right  = ball.position.x + radius;
+    //     float top    = ball.position.y - radius;
+    //     float bottom = ball.position.y + radius;
+
+    //     // Compute the range of affected cells
+    //     sf::Vector2i min_coords = getCellCoords(left, top);
+    //     sf::Vector2i max_coords = getCellCoords(right, bottom);
+
+    //     // Add ball to all intersecting cells
+    //     for (int y = min_coords.y; y <= max_coords.y; ++y) {
+    //         for (int x = min_coords.x; x <= max_coords.x; ++x) {
+    //             if (isValidCell(x, y))
+    //                 getCell(x, y).addBall(ball_idx);
+    //         }
+    //     }
+    // }
+
 };

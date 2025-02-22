@@ -24,7 +24,7 @@ struct VerletBall
     sf::Vector2f position          = {0.f, 0.f};
     sf::Vector2f previous_position = {0.f, 0.f};
     sf::Vector2f velocity          = {0.f, 0.f};
-    sf::Vector2f acceleration      = {0.f, 0.f};
+    sf::Vector2f acceleration      = {0.f, 150.f};
     sf::Color color                = {sf::Color(0, 176, 255)};
 
     VerletBall(float radius, sf::Vector2f init_position, float init_speed, float angle)
@@ -38,7 +38,7 @@ struct VerletBall
     // x(n+1) = 2 * x(n) - x(n-1) + a * dt^2
     void updatePosition(float dt) 
     {
-        const float DAMPING = 40.f;
+        const float DAMPING = 20.f;
         const sf::Vector2f last_update_move = position - previous_position;
         sf::Vector2f temp_position = position;
         position = 2.f * position - previous_position + (acceleration - last_update_move * DAMPING) * (dt * dt);

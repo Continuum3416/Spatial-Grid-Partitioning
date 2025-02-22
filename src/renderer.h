@@ -12,6 +12,7 @@ public:
     Renderer(sf::RenderTarget& render) 
         : render(render)
     {}
+    
 
     void renderBalls(const PhysicsSolver& solver) const
     {
@@ -27,17 +28,17 @@ public:
         }
     }
 
-    void renderTriangle(const PhysicsSolver& solver) const
+    void renderPolygons(const PhysicsSolver& solver) const
     {
         const auto& objects = solver.objects;
         sf::VertexArray vertices(sf::Triangles);
 
         for (const auto& obj : objects)
         {
-            const int triangleCount = 3; // Approximate a circle with triangles
-            float angleStep = 2 * PI_f / triangleCount;
+            const int triangle_count = 4; // Approximate a circle with triangles
+            float angleStep = 2 * PI_f / triangle_count;
 
-            for (int i = 0; i < triangleCount; ++i)
+            for (int i = 0; i < triangle_count; ++i)
             {
                 float angle1 = i * angleStep;
                 float angle2 = (i + 1) * angleStep;
@@ -116,6 +117,15 @@ private:
         char buffer[max_string_size];
         auto [ptr, ec] = std::to_chars(buffer, buffer + sizeof(buffer), elapsed, std::chars_format::fixed, 2);
         return std::string(buffer, ptr) + " sec";
+    }
+
+    [[nodiscard]]
+    std::string getReferenceCount(const PhysicsSolver& solver) const
+    {
+        const Grid& grid = solver.grid;
+        char buffer[max_string_size];
+        auto [ptr, ec] = std::to_chars(buffer, buffer + sizeof(buffer), grid.getTotalBallInGrid());
+        return std::string(buffer, ptr) + " objects";
     }
 
 public:
