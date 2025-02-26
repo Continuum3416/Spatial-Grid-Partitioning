@@ -54,7 +54,7 @@ cmake --build ./build/ --config Debug
 ./build/Debug/grid
 ```
 
-Same thing for window, but remember to change to backward slash `\` and run with .exe instead.
+Same thing for window, but remember to change to backward slash `\` instead.
 
 ## Settings:
 
